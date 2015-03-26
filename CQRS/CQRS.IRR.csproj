@@ -1,0 +1,107 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{AC9B0F42-9E2E-4424-B4EF-7557D32FE2D4}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CQRS.IRR</RootNamespace>
+    <AssemblyName>CQRS.IRR</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Iesi.Collections">
+      <HintPath>..\packages\Iesi.Collections.4.0.0.4000\lib\net40\Iesi.Collections.dll</HintPath>
+    </Reference>
+    <Reference Include="NHibernate">
+      <HintPath>..\packages\NHibernate.4.0.3.4000\lib\net40\NHibernate.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Command\DeleteCommandParams.cs" />
+    <Compile Include="Command\EntityBasedCommandParams.cs" />
+    <Compile Include="Command\EvictCommandParams.cs" />
+    <Compile Include="Command\ICommand.cs" />
+    <Compile Include="Command\ICommandDispatcher.cs" />
+    <Compile Include="Command\ICommandParams.cs" />
+    <Compile Include="Command\SaveOrUpdateCommandParams.cs" />
+    <Compile Include="Criterias\ByIdCriteria.cs" />
+    <Compile Include="Criterias\CountCriteria.cs" />
+    <Compile Include="Criterias\GenericListResultCriteria.cs" />
+    <Compile Include="Criterias\GenericSingleResultCriteria.cs" />
+    <Compile Include="Criterias\GetManagersWithDeputiesCriteria.cs" />
+    <Compile Include="Criterias\ICriteria.cs" />
+    <Compile Include="Criterias\ListCriteria.cs" />
+    <Compile Include="Criterias\ManagerWithDeputiesCriteria.cs" />
+    <Compile Include="Criterias\ManagerWithSecretaryByIdCriteria.cs" />
+    <Compile Include="Extensions\CommandDispatcherExtensions.cs" />
+    <Compile Include="Extensions\CriteriaExtensions.cs" />
+    <Compile Include="Extensions\QueryableExtensions.cs" />
+    <Compile Include="Extensions\QueryDispatcherExtensions.cs" />
+    <Compile Include="Extensions\QueryForExtensions.cs" />
+    <Compile Include="ManagerService.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="DependencyResolver\IDependencyResolver.cs" />
+    <Compile Include="Queries\CountQuery.cs" />
+    <Compile Include="Queries\GenericListResultQuery.cs" />
+    <Compile Include="Queries\GenericSingleResultQuery.cs" />
+    <Compile Include="Queries\GetByIdQuery.cs" />
+    <Compile Include="Queries\GetManagersWithDeputiesQuery.cs" />
+    <Compile Include="Queries\GetManagerWithSecretaryQuery.cs" />
+    <Compile Include="Queries\IQuery.cs" />
+    <Compile Include="Queries\IQueryDispatcher.cs" />
+    <Compile Include="Queries\ListQuery.cs" />
+    <Compile Include="Queries\QueryBase.cs" />
+    <Compile Include="Queries\QueryDispatcher.cs" />
+    <Compile Include="Queries\QueryFor.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\Common.Interfaces\Common.Interfaces.csproj">
+      <Project>{029966c4-b75c-4578-bfdf-f4c1e9f93db1}</Project>
+      <Name>Common.Interfaces</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Entities\Entities.csproj">
+      <Project>{43064d6d-cadf-4636-8578-f27b0cf7151d}</Project>
+      <Name>Entities</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
